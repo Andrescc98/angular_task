@@ -1,0 +1,8 @@
+<form (submit)="register($event)">
+    <input type="text" [(ngModel)]="data.name" [ngModelOptions]="{standalone:true}" placeholder="Nombre">
+    <input type="email" [(ngModel)]="data.email" [ngModelOptions]="{standalone:true}" placeholder="correo">
+    <input type="password" [(ngModel)]="data.password" [ngModelOptions]="{standalone:true}" placeholder="contraseña">
+    <input type="password" [(ngModel)]="data.password_confirmed" [ngModelOptions]="{standalone:true}">
+
+    <button type="submit">Enviar</button>
+</form>
