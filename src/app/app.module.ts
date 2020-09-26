@@ -7,9 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { IndexComponent } from './components/index/index.component';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, IndexComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 
   providers: [
