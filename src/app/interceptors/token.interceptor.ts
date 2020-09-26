@@ -10,16 +10,16 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  private headerName: string = 'X-CSRF-TOKEN';
+  private headerName: string = 'X-XSRF-TOKEN';
 
   constructor(private tokenServices: HttpXsrfTokenExtractor) {}
 
   intercept(
-    request: HttpRequest<unknown>,
+    request: HttpRequest<any>,
     next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
+  ): Observable<HttpEvent<any>> {
     
-    const token = this.tokenServices.getToken();
+
 
     if (request.method === 'GET' || request.method === 'HEAD') {
       request = request.clone({
@@ -27,14 +27,16 @@ export class TokenInterceptor implements HttpInterceptor {
       });
       return next.handle(request);
     }
-
+    const token = this.tokenServices.getToken();
+    console.log(token);
+    
     if (token !== null && !request.headers.has(this.headerName)) {
       request = request.clone({
-        withCredentials: true,
+        withCredentials:true,
         headers: request.headers.set(this.headerName, token),
-      });
+      });    
+    }  
 
-      return next.handle(request);
-    }
+    return next.handle(request);
   }
 }
