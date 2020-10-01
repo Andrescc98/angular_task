@@ -1,8 +1,70 @@
-<form (submit)="register($event)">
-    <input type="text" [(ngModel)]="data.name" [ngModelOptions]="{standalone:true}" placeholder="Nombre">
-    <input type="email" [(ngModel)]="data.email" [ngModelOptions]="{standalone:true}" placeholder="correo">
-    <input type="password" [(ngModel)]="data.password" [ngModelOptions]="{standalone:true}" placeholder="contraseña">
-    <input type="password" [(ngModel)]="data.password_confirmed" [ngModelOptions]="{standalone:true}">
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <form (submit)="register($event)">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="data.name"
+              [ngModelOptions]="{ standalone: true }"
+              placeholder="Nombre"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-user"></i></span>
+            </div>
+          </div>
 
-    <button type="submit">Enviar</button>
-</form>
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              [(ngModel)]="data.email"
+              [ngModelOptions]="{ standalone: true }"
+              placeholder="Correo Electronico"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fa fa-envelope"></i
+              ></span>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control"
+              [(ngModel)]="data.password"
+              [ngModelOptions]="{ standalone: true }"
+              placeholder="Contraseña"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control"
+              [(ngModel)]="data.password_confirmed"
+              [ngModelOptions]="{ standalone: true }"
+              placeholder="Confirmar Contraseña"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-lock"></i></span>
+            </div>
+          </div>
+
+          <div class="mb-3 text-center">
+              <a routerLink="/login" class="btn btn-link">Ya estoy registrado</a>
+          </div>
+
+          <button type="submit" class="btn btn-block btn-success">
+            Registrarme
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
