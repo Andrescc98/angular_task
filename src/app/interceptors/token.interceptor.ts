@@ -28,7 +28,6 @@ export class TokenInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
     const token = this.tokenServices.getToken();
-    console.log(token);
     
     if (token !== null && !request.headers.has(this.headerName)) {
       request = request.clone({
