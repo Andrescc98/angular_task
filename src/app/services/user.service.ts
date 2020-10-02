@@ -27,4 +27,25 @@ export class UserService {
   isAuth():any{
     return this.http.get(`${this.host.path}api/is_auth`);
   }
+
+  setItem(data:any):void{
+    sessionStorage.setItem("name", data.name);
+    sessionStorage.setItem("email", data.email)
+    sessionStorage.setItem("image", data.image)
+  }
+
+  getItem():object{
+    const user_data={
+      name:sessionStorage.getItem("name"),
+      email:sessionStorage.getItem("email"),
+      image:sessionStorage.getItem("image")
+    }
+    return user_data;
+  }
+
+  clear():void{
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("email")
+    sessionStorage.removeItem("image")
+  }
 }
