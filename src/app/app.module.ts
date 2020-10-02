@@ -9,17 +9,21 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { IndexComponent } from './components/index/index.component';
+import { AuthGuard } from './guards/auth.guard';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, IndexComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, IndexComponent, LoadingComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
     },
+
   ],
   bootstrap: [AppComponent],
 })
