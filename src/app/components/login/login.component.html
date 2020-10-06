@@ -2,12 +2,11 @@
   <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
     <div class="card">
       <div class="card-body">
-        <form (submit)="login($event)">
+        <form (submit)="login($event)" novalidate [formGroup]="form">
           <div class="input-group mb-3">
             <input
               type="email"
-              [(ngModel)]="data.email"
-              name="email"
+              formControlName="email"
               class="form-control"
               placeholder="Correo electronico"
             />
@@ -21,8 +20,7 @@
           <div class="input-group mb-3">
             <input
               type="password"
-              [(ngModel)]="data.password"
-              name="password"
+              formControlName="password"
               class="form-control"
               placeholder="Contraseña"
             />
@@ -46,7 +44,7 @@
               </div>
     
               <ng-template #success>
-                <button type="submit" class="btn btn-block btn-success">
+                <button type="submit" [disabled]="form.invalid" class="btn btn-block btn-success">
                   Entrar
                 </button>
               </ng-template>
