@@ -34,21 +34,20 @@
           </div>
 
           <div>
-            <div *ngIf="loading; else success">
-                <button type="submit" class="btn btn-block btn-success" disabled>
+            <div>
+                <button type="submit" [disabled]="form.invalid || loading" class="btn btn-block btn-success" disabled>
                   <div>
-                    <span class="spinner-border spinner-border-sm"></span>
-                    Entrando...
+                    <div *ngIf="loading; else stop">
+                      <div class="spinner-border spinner-border-sm"></div>
+                      Entrando...
+                    </div>
+                    <ng-template #stop>
+                      Entrar
+                    </ng-template>
                   </div>
+
                 </button>
               </div>
-    
-              <ng-template #success>
-                <button type="submit" [disabled]="form.invalid" class="btn btn-block btn-success">
-                  Entrar
-                </button>
-              </ng-template>
-              
           </div>
 
         </form>
