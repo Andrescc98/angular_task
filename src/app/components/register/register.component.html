@@ -2,13 +2,12 @@
   <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
     <div class="card">
       <div class="card-body">
-        <form (submit)="register($event)">
+        <form (submit)="register($event)" [formGroup]="userRegister">
           <div class="input-group mb-3">
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="data.name"
-              [ngModelOptions]="{ standalone: true }"
+              formControlName="name"
               placeholder="Nombre"
             />
             <div class="input-group-prepend">
@@ -19,9 +18,8 @@
           <div class="input-group mb-3">
             <input
               type="email"
-              class="form-control"
-              [(ngModel)]="data.email"
-              [ngModelOptions]="{ standalone: true }"
+              class="form-control"              
+              formControlName="email"
               placeholder="Correo Electronico"
             />
             <div class="input-group-prepend">
@@ -34,9 +32,8 @@
           <div class="input-group mb-3">
             <input
               type="password"
-              class="form-control"
-              [(ngModel)]="data.password"
-              [ngModelOptions]="{ standalone: true }"
+              class="form-control"              
+              formControlName="password"
               placeholder="Contraseña"
             />
             <div class="input-group-prepend">
@@ -47,8 +44,7 @@
             <input
               type="password"
               class="form-control"
-              [(ngModel)]="data.password_confirmed"
-              [ngModelOptions]="{ standalone: true }"
+              formControlName="password_confirmed"
               placeholder="Confirmar Contraseña"
             />
             <div class="input-group-prepend">
@@ -60,7 +56,7 @@
               <a routerLink="/login" class="btn btn-link">Ya estoy registrado</a>
           </div>
 
-          <button type="submit" class="btn btn-block btn-success">
+          <button type="submit" [disabled]="userRegister.invalid" class="btn btn-block btn-success">
             Registrarme
           </button>
         </form>
